@@ -154,6 +154,44 @@ end
 
 def team_name
   game_hash.map do |place, team|
+    team[:team_name]
+  end 
+end
+
+# def team_name
+#   new_arr =[]
+#   game_hash.each do |place, team|
+#    new_arr << team[:team_name]
+#   end
+#   new_arr
+# end
+
+def player_numbers(team_name)
+  game_hash.map do |place, team|
+    if team[:team_name] == team_name
+      team.each do |attributes, data|
+        if attributes == :player_name
+          data[:number]
+        end
+      end
+    end
+  end
+  
+  def player_stats(player_name)
+    new_hash = {}
+    game_hash.each do |place, team|
+      team.each do |attributes, data|
+        if attributes == :players
+          data.each do |player|
+            if player[:player_name] == player_name
+              new_hash= player 
+            end
+          end
+        end
+      end
+    end
+    new_hash
+  end
    
 
 
